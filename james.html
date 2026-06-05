@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - James Alexander Riaño Becerra</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #c0a375;
+            --text: #333;
+            --text-light: #666;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-alt);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact;
+        }
+        
+        .cv-container {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: var(--bg);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            overflow: hidden;
+        }
+        
+        /* SIDEBAR */
+        .sidebar {
+            background: var(--primary);
+            color: #fff;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+        
+        .profile-section { text-align: center; }
+        
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            margin: 0 auto 20px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, var(--accent), #a08555);
+        }
+        
+        .profile-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+        
+        .profile-title {
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(192, 163, 117, 0.4);
+            font-weight: 600;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+            margin-top: 3px;
+        }
+        
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .contact-item a:hover { color: var(--accent); }
+        
+        .skill-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin: 4px 4px 4px 0;
+            font-size: 0.8rem;
+            border: 1px solid rgba(192, 163, 117, 0.3);
+            transition: 0.3s;
+        }
+        
+        .skill-tag:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
+        .project-link {
+            display: block;
+            background: rgba(255,255,255,0.08);
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #fff;
+            border-left: 3px solid var(--accent);
+            transition: 0.3s;
+        }
+        
+        .project-link:hover {
+            background: rgba(192, 163, 117, 0.2);
+            transform: translateX(3px);
+        }
+        
+        .project-link .title {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.95rem;
+        }
+        
+        .project-link .desc {
+            font-size: 0.75rem;
+            opacity: 0.85;
+        }
+        
+        /* MAIN CONTENT */
+        .main-content { padding: 40px 45px; }
+        
+        .header {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+        
+        .header h2 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .summary {
+            background: var(--bg-alt);
+            padding: 20px 25px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+        
+        .section { margin-bottom: 30px; }
+        
+        .section h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .job {
+            margin-bottom: 25px;
+            padding-left: 18px;
+            border-left: 2px solid #eee;
+            position: relative;
+        }
+        
+        .job::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .job-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary);
+        }
+        
+        .company {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            background: var(--bg-alt);
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+        
+        .job-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+        
+        .job-desc ul { list-style: none; padding-left: 5px; }
+        
+        .job-desc li {
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+        }
+        
+        .job-desc li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        .education-item { margin-bottom: 15px; }
+        
+        .education-item .degree {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        
+        .education-item .institution {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        /* PRINT & RESPONSIVE */
+        @media print {
+            body { background: #fff; }
+            .cv-container { 
+                margin: 0; 
+                box-shadow: none; 
+                width: 100%; 
+                max-width: 100%;
+                min-height: auto;
+            }
+            .sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        
+        @media (max-width: 768px) {
+            .cv-container { grid-template-columns: 1fr; }
+            .sidebar { padding: 30px 25px; text-align: center; }
+            .contact-item { justify-content: center; }
+            .header h1 { font-size: 1.8rem; }
+            .main-content { padding: 30px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="profile-section">
+            <!-- FOTO PROFESIONAL ACTUALIZADA -->
+            <img src="foto-perfil-james.jpg" alt="James Alexander Riaño Becerra" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="profile-img" style="display:none; align-items:center; justify-content:center; font-size:2.5rem; color:#1a1a2e; font-weight:bold;">JR</div>
+            <div class="profile-name">James Alexander<br>Riaño Becerra</div>
+            <div class="profile-title">Asesor Comercial Senior</div>
+        </div>
+
+        <div class="contact-section">
+            <h3 class="section-title">Contacto</h3>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>300 116 4218</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:riano200612@gmail.com">riano200612@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Cartagena, Colombia</span>
+            </div>
+        </div>
+
+        <div class="projects-section">
+            <h3 class="section-title">Proyectos Destacados</h3>
+            
+            <!-- PROYECTO 1 -->
+            <a href="#" target="_blank" class="project-link">
+                <span class="title"><i class="fas fa-building"></i> María Auxi · Proyectos Inmobiliarios</span>
+                <span class="desc">Desarrollo de portafolio web de lujo con animaciones GSAP de alta gama.</span>
+            </a>
+
+            <!-- PROYECTO 2 -->
+            <a href="#" target="_blank" class="project-link">
+                <span class="title"><i class="fas fa-broom"></i> Grupo Limpia Cartagena</span>
+                <span class="desc">Despliegue de infraestructura digital corporativa con enfoque de marca institucional.</span>
+            </a>
+        </div>
+
+        <div class="skills-section">
+            <h3 class="section-title">Herramientas Digitales</h3>
+            <span class="skill-tag">Canva</span>
+            <span class="skill-tag">CapCut</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Google Labs</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">JavaScript</span>
+        </div>
+
+        <div class="languages-section">
+            <h3 class="section-title">Idiomas</h3>
+            <span class="skill-tag">Español (Nativo)</span>
+            <span class="skill-tag">Inglés (B1)</span>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <header class="header">
+            <h1>James Alexander<br>Riaño Becerra</h1>
+            <h2>Asesor Comercial Senior & Estratega de Marketing</h2>
+        </header>
+
+        <section class="summary">
+            <p>
+                Especialista en asesoría comercial con más de diez años liderando procesos de ventas consultivas y desarrollo de mercados. Mi enfoque se centra en identificar necesidades, diseñar estrategias competitivas y ejecutar cierres efectivos. Actualmente integro habilidades de <strong>marketing digital y creación de contenido</strong> (Canva, CapCut) para potenciar la marca personal y el posicionamiento de productos en sectores gastronómicos e inmobiliarios.
+            </p>
+        </section>
+
+        <section class="section">
+            <h3><i class="fas fa-briefcase"></i> Experiencia Laboral</h3>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Asesor Comercial Senior</span>
+                    <span class="date">2024 — Presente</span>
+                </div>
+                <div class="company">Santamaría del Mar · Cartagena, Colombia</div>
+                <div class="job-desc">
+                    <ul>
+                        <li>Liderazgo en la promoción y venta de servicios gastronómicos y organización de eventos corporativos.</li>
+                        <li>Incremento sostenido del ticket promedio mediante captación de nuevos clientes y fidelización de cuentas.</li>
+                        <li>Coordinación directa con equipos de salón y cocina para asegurar excelencia operativa.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Asesor Comercial</span>
+                    <span class="date">2020 — 2024</span>
+                </div>
+                <div class="company">Carbonazo Bistro · Cuenca, Ecuador</div>
+                <div class="job-desc">
+                    <ul>
+                        <li>Diseño e implementación de estrategias de captación en un mercado gastronómico competitivo.</li>
+                        <li>Incremento de ventas recurrentes mediante programas de fidelización y seguimiento personalizado.</li>
+                        <li>Optimización del servicio postventa y gestión de conflictos.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Vendedor & Asistente de Marketing</span>
+                    <span class="date">2019 — 2021</span>
+                </div>
+                <div class="company">Keylime Pi Branding Agency · Cuenca, Ecuador</div>
+                <div class="job-desc">
+                    <ul>
+                        <li>Soporte estratégico en el plan de marketing y campañas publicitarias.</li>
+                        <li>Identificación, prospección y calificación de leads para optimización del embudo de ventas.</li>
+                        <li>Monitoreo de KPIs para evaluar el retorno de inversión.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3><i class="fas fa-graduation-cap"></i> Formación Académica</h3>
+            <div class="education-item">
+                <div class="degree">Técnico en Asesoría Comercial</div>
+                <div class="institution">Servicio Nacional de Aprendizaje (SENA) · Cartagena</div>
+            </div>
+            <div class="education-item">
+                <div class="degree">Programa Bilingüe - Inglés Intermedio</div>
+                <div class="institution">Servicio Nacional de Aprendizaje (SENA)</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3><i class="fas fa-star"></i> Competencias Clave</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+                <span class="skill-tag" style="background: var(--bg-alt); color: var(--text); border: 1px solid #ddd;">Ventas Consultivas</span>
+                <span class="skill-tag" style="background: var(--bg-alt); color: var(--text); border: 1px solid #ddd;">Negociación Avanzada</span>
+                <span class="skill-tag" style="background: var(--bg-alt); color: var(--text); border: 1px solid #ddd;">Gestión de Cuentas</span>
+                <span class="skill-tag" style="background: var(--bg-alt); color: var(--text); border: 1px solid #ddd;">Marketing Estratégico</span>
+                <span class="skill-tag" style="background: var(--bg-alt); color: var(--text); border: 1px solid #ddd;">Análisis de KPI</span>
+                <span class="skill-tag" style="background: var(--bg-alt); color: var(--text); border: 1px solid #ddd;">Liderazgo de Equipos</span>
+            </div>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>
